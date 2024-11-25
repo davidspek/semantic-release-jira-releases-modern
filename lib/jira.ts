@@ -1,8 +1,11 @@
-import JiraClient from 'jira-connector';
+import JiraClient from "jira-connector";
 
-import { PluginConfig, PluginContext } from './types';
+import type { PluginConfig, PluginContext } from "./types";
 
-export function makeClient(config: PluginConfig, context: PluginContext): JiraClient {
+export function makeClient(
+  config: PluginConfig,
+  context: PluginContext,
+): JiraClient {
   return new JiraClient({
     host: config.jiraHost,
     basic_auth: {

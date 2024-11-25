@@ -69,7 +69,7 @@ async function findOrCreateVersion(
     newVersion = {
       name,
       id: "dry_run_id",
-    // biome-ignore lint/suspicious/noExplicitAny: dry run override
+      // biome-ignore lint/suspicious/noExplicitAny: dry run override
     } as any;
   } else {
     const descriptionText = description || "";
@@ -114,18 +114,18 @@ async function editIssueFixVersions(
     }
   } catch (err) {
     const allowedStatusCodes = [400, 404];
-    let statusCode = 0
+    let statusCode = 0;
     if (typeof err === "string") {
       try {
-        const errOut = JSON.parse(err) as {statusCode: number} ;
+        const errOut = JSON.parse(err) as { statusCode: number };
         statusCode = errOut.statusCode;
       } catch (err) {
         // it's not json :shrug:
       }
     } else {
-      const { statusCode: possibleCode } = err as {statusCode?: number};
+      const { statusCode: possibleCode } = err as { statusCode?: number };
       if (possibleCode !== undefined) {
-        statusCode = possibleCode
+        statusCode = possibleCode;
       }
     }
     if (allowedStatusCodes.indexOf(statusCode) === -1) {
