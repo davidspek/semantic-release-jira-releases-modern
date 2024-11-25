@@ -1,4 +1,4 @@
-import { Signale } from 'signale';
+import type { Signale } from "signale";
 
 export interface PluginContext {
   cwd: string;
@@ -55,8 +55,9 @@ export interface BaseConfig {
   dryRun: boolean;
 }
 
-export const DEFAULT_VERSION_TEMPLATE = 'v${version}';
-export const DEFAULT_RELEASE_DESCRIPTION_TEMPLATE = 'Automated release with semantic-release-jira-releases https://git.io/JvAbj';
+export const DEFAULT_VERSION_TEMPLATE = "v${version}";
+export const DEFAULT_RELEASE_DESCRIPTION_TEMPLATE =
+  "Automated release with semantic-release-jira-releases https://git.io/JvAbj";
 
 export interface PluginConfig extends BaseConfig {
   /**
