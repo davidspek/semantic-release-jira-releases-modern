@@ -1,10 +1,10 @@
 {
-  "name": "semantic-release-jira-releases",
+  "name": "semantic-release-jira-releases-modern",
   "version": "0.7.2",
   "packageManager": "yarn@4.1.1",
   "main": "main.js",
   "types": "./lib/index.ts",
-  "repository": "https://github.com/UpHabit/semantic-release-jira-releases",
+  "repository": "https://github.com/hweeks/semantic-release-jira-releases",
   "license": "MIT",
   "files": [
     "lib/**/*",
@@ -21,7 +21,7 @@
     "@semantic-release/error": "2.2.0",
     "esbuild": "0.24.0",
     "esbuild-register": "3.6.0",
-    "jira-connector": "3.1.0",
+    "jira.js": "4.0.2",
     "lodash": "4.17.21",
     "p-limit": "2.3.0",
     "tslib": "1.14.1"
