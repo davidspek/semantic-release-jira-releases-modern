@@ -1,4 +1,4 @@
-# semantic-release-jira-releases
+# semantic-release-jira-releases-modern
 
 [**semantic-release**](https://github.com/semantic-release/semantic-release) plugin to publish a jira release.
 
@@ -9,7 +9,7 @@
 
 | Step               | Description                                                                                                                                   |
 |--------------------|----------------------------------------------------------------------------|
-| `verifyConditions` | Validate the config options and check for a `JIRA_AUTH` in the environment |
+| `verifyConditions` | Validate the config options and check for a `JIRA_USER,JIRA_TOKEN` in the environment |
 | `sucess`           | Find all tickets from commits and add them to a new release on JIRA        |
 
 ## Install
@@ -30,7 +30,7 @@ The plugin should be added to your config
     ["semantic-release-jira-releases", {
       "projectId": "UH",
       "releaseNameTemplate": "Test v${version}",
-      "jiraHost": "uphabit.atlassian.net",
+      "jiraHost": "your-company.atlassian.net",
       "ticketPrefixes": [ "TEST", "UH"],
       "ticketRegex": "[a-zA-Z]{3,5}-\\d{3,5}"
     }]
@@ -42,7 +42,7 @@ Please note that `ticketRegex` cannot be used together with `ticketPrefixes`.
 ```typescript
 interface Config {
   /**
-   * A domain of a jira instance ie: `uphabit.atlasian.net`
+   * A domain of a jira instance ie: `your-company.atlassian.net`
    */
   jiraHost: string;
 
@@ -82,7 +82,7 @@ interface Config {
    *      notes: The full release notes: This may be very large
    *             Only use it if you have very small releases
    *
-   * @default `Automated released with semantic-release-jira-releases https://git.io/JvAbj`
+   * @default `Automated released with semantic-release-jira-releases-modern`
    */
   releaseDescriptionTemplate?: string;
 

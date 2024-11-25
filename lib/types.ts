@@ -57,11 +57,11 @@ export interface BaseConfig {
 
 export const DEFAULT_VERSION_TEMPLATE = "v${version}";
 export const DEFAULT_RELEASE_DESCRIPTION_TEMPLATE =
-  "Automated release with semantic-release-jira-releases https://git.io/JvAbj";
+  "Automated release with semantic-release-jira-releases-modern";
 
 export interface PluginConfig extends BaseConfig {
   /**
-   * A domain of a jira instance ie: `uphabit.atlasian.net`
+   * A domain of a jira instance ie: `your-company.atlassian.net`
    */
   jiraHost: string;
 
@@ -101,7 +101,7 @@ export interface PluginConfig extends BaseConfig {
    *      notes: The full release notes: This may be very large
    *             Only use it if you have very small releases
    *
-   * @default `Automated release with semantic-release-jira-releases https://git.io/JvAbj`
+   * @default `Automated release with semantic-release-jira-releases-modern`
    */
   releaseDescriptionTemplate?: string;
 

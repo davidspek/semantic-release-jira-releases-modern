@@ -1,15 +1,18 @@
-import JiraClient from "jira-connector";
-
+import { Version3Client } from "jira.js";
 import type { PluginConfig, PluginContext } from "./types";
 
-export function makeClient(
+export function modernClient(
   config: PluginConfig,
   context: PluginContext,
-): JiraClient {
-  return new JiraClient({
+): Version3Client {
+  return new Version3Client({
     host: config.jiraHost,
-    basic_auth: {
-      base64: context.env.JIRA_AUTH,
+    authentication: {
+      basic: {
+        email: context.env.JIRA_USER || "",
+        apiToken: context.env.JIRA_TOKEN || "",
+      },
     },
   });
 }
+("");
