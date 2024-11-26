@@ -18,6 +18,8 @@ jobs:
           node-version: "lts/*"
       - name: Install dependencies
         run: corepack enable && yarn
+      - name: Build
+        run: yarn build
       - name: Run semantic-release
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
