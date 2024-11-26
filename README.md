@@ -2,7 +2,7 @@
 
 [**semantic-release**](https://github.com/semantic-release/semantic-release) plugin to publish a jira release.
 
-<!-- [![npm latest version](https://img.shields.io/npm/v/semantic-release-jira-releases-modern/latest.svg)](https://www.npmjs.com/package/semantic-release-jira-releases-modern) -->
+[![npm latest version](https://img.shields.io/npm/v/semantic-release-jira-releases-modern/latest.svg)](https://www.npmjs.com/package/semantic-release-jira-releases-modern)
 
 
 | Step               | Description                                                                                                                                   |
