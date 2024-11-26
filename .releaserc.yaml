@@ -1,5 +1,5 @@
 repositoryUrl: git@github.com:UpHabit/semantic-release-jira-releases.git
-branch: master
+branch: main
 dryRun: false
 debug: false
 plugins:
