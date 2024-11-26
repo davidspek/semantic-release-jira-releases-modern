@@ -33,19 +33,21 @@ export async function findOrCreateVersion(
     const descriptionText = description || "";
     const newVersionConfig: Version = {
       name,
-      projectId: parseInt(remoteProject.id, 10),
+      projectId: Number.parseInt(remoteProject.id, 10),
       description: descriptionText,
       released: Boolean(config.released),
     };
     if (config.setReleaseDate) {
-        newVersionConfig.releaseDate = new Date().toISOString()
+      newVersionConfig.releaseDate = new Date().toISOString();
     }
     try {
-        newVersion = await jira.projectVersions.createVersion(newVersionConfig);
+      newVersion = await jira.projectVersions.createVersion(newVersionConfig);
     } catch (error) {
-        newVersion = {}
-        context.logger.info(`Failed to create new release '${newVersionConfig.name}'`);
-        throw new Error(`Failure to create new version: ${error}`)
+      newVersion = {};
+      context.logger.info(
+        `Failed to create new release '${newVersionConfig.name}'`,
+      );
+      throw new Error(`Failure to create new version: ${error}`);
     }
   }
   context.logger.info(`Made new release '${newVersion.id}'`);
@@ -83,9 +85,7 @@ export async function editIssueFixVersions(
       await jira.issues.editIssue(issueUpdate);
     }
   } catch (err) {
-    context.logger.error(
-      `Unable to update issue ${issueKey} error: ${err}`,
-    );
-    throw err
+    context.logger.error(`Unable to update issue ${issueKey} error: ${err}`);
+    throw err;
   }
 }

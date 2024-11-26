@@ -8,10 +8,7 @@ import {
   type PluginConfig,
 } from "./types";
 import { escapeRegExp } from "./util";
-import {
-  editIssueFixVersions,
-  findOrCreateVersion,
-} from "./jira-connection";
+import { editIssueFixVersions, findOrCreateVersion } from "./jira-connection";
 
 export function getTickets(
   config: PluginConfig,
