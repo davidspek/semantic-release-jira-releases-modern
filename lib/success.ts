@@ -1,6 +1,6 @@
 import * as _ from "lodash";
 import pLimit from "p-limit";
-import { modernClient } from "./jira";
+import { createClient } from "./jira";
 import {
   DEFAULT_RELEASE_DESCRIPTION_TEMPLATE,
   DEFAULT_VERSION_TEMPLATE,
@@ -8,10 +8,7 @@ import {
   type PluginConfig,
 } from "./types";
 import { escapeRegExp } from "./util";
-import {
-  editIssueFixVersionsModern,
-  findOrCreateVersionModern,
-} from "./jira-connection";
+import { editIssueFixVersions, findOrCreateVersion } from "./jira-connection";
 
 export function getTickets(
   config: PluginConfig,
@@ -71,12 +68,12 @@ export async function success(
 
   context.logger.info(`Using jira release '${newVersionName}'`);
 
-  const latestJira = modernClient(config, context);
-  const projectFound = await latestJira.projects.getProject(config.projectId);
-  const releasedVersion = await findOrCreateVersionModern(
+  const jiraClient = createClient(config, context);
+  const projectFound = await jiraClient.projects.getProject(config.projectId);
+  const releasedVersion = await findOrCreateVersion(
     config,
     context,
-    latestJira,
+    jiraClient,
     projectFound.id,
     newVersionName,
     newVersionDescription,
@@ -85,10 +82,10 @@ export async function success(
 
   const editsModern = tickets.map((issueKey) =>
     concurrentLimit(() =>
-      editIssueFixVersionsModern(
+      editIssueFixVersions(
         config,
         context,
-        latestJira,
+        jiraClient,
         releasedVersion,
         issueKey,
       ),

@@ -4,7 +4,7 @@ import type { PluginConfig, GenerateNotesContext } from "./types";
 import type { Fields, Version } from "jira.js/out/version3/models";
 import type { EditIssue } from "jira.js/out/version3/parameters";
 
-export async function findOrCreateVersionModern(
+export async function findOrCreateVersion(
   config: PluginConfig,
   context: GenerateNotesContext,
   jira: Version3Client,
@@ -33,19 +33,28 @@ export async function findOrCreateVersionModern(
     const descriptionText = description || "";
     const newVersionConfig: Version = {
       name,
-      projectId: projectIdOrKey as unknown as number,
+      projectId: Number.parseInt(remoteProject.id, 10),
       description: descriptionText,
       released: Boolean(config.released),
-      releaseDate: config.setReleaseDate ? new Date().toISOString() : undefined,
     };
-    newVersion = await jira.projectVersions.createVersion(newVersionConfig);
+    if (config.setReleaseDate) {
+      newVersionConfig.releaseDate = new Date().toISOString();
+    }
+    try {
+      newVersion = await jira.projectVersions.createVersion(newVersionConfig);
+    } catch (error) {
+      newVersion = {};
+      context.logger.info(
+        `Failed to create new release '${newVersionConfig.name}'`,
+      );
+      throw new Error(`Failure to create new version: ${error}`);
+    }
   }
-
   context.logger.info(`Made new release '${newVersion.id}'`);
   return newVersion;
 }
 
-export async function editIssueFixVersionsModern(
+export async function editIssueFixVersions(
   config: PluginConfig,
   context: GenerateNotesContext,
   jira: Version3Client,
@@ -63,39 +72,20 @@ export async function editIssueFixVersionsModern(
             self: newVersion.self || "",
             description: newVersion.description || "",
             archived: newVersion.archived || false,
-            released: newVersion.released || true,
+            released: newVersion.released || false,
           },
         ],
       };
       const issueUpdate: EditIssue = {
         issueIdOrKey: issueKey,
         fields: {
-          fixFieldUpdate,
+          ...fixFieldUpdate,
         },
       };
       await jira.issues.editIssue(issueUpdate);
     }
   } catch (err) {
-    const allowedStatusCodes = [400, 404];
-    let statusCode = 0;
-    if (typeof err === "string") {
-      try {
-        const errOut = JSON.parse(err) as { statusCode: number };
-        statusCode = errOut.statusCode;
-      } catch (err) {
-        // it's not json :shrug:
-      }
-    } else {
-      const { statusCode: possibleCode } = err as { statusCode?: number };
-      if (possibleCode !== undefined) {
-        statusCode = possibleCode;
-      }
-    }
-    if (allowedStatusCodes.indexOf(statusCode) === -1) {
-      throw err;
-    }
-    context.logger.error(
-      `Unable to update issue ${issueKey} statusCode: ${statusCode}`,
-    );
+    context.logger.error(`Unable to update issue ${issueKey} error: ${err}`);
+    throw err;
   }
 }

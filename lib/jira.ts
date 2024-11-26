@@ -1,7 +1,7 @@
 import { Version3Client } from "jira.js";
 import type { PluginConfig, PluginContext } from "./types";
 
-export function modernClient(
+export function createClient(
   config: PluginConfig,
   context: PluginContext,
 ): Version3Client {
@@ -15,4 +15,3 @@ export function modernClient(
     },
   });
 }
-("");
