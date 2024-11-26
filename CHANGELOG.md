@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/aechweeks/semantic-release-jira-releases-modern/compare/v1.0.0...v1.1.0) (2024-11-26)
+
+
+### Features
+
+* update build and release\ ([a1ef913](https://github.com/aechweeks/semantic-release-jira-releases-modern/commit/a1ef9136400dcfdc450a7d45596805b99afce1fe))
+
 # 1.0.0 (2024-11-26)
 
 
