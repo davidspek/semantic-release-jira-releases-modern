@@ -4,7 +4,7 @@
   "packageManager": "yarn@4.1.1",
   "main": "main.js",
   "types": "./lib/index.ts",
-  "repository": "https://github.com/hweeks/semantic-release-jira-releases-modern",
+  "repository": "https://github.com/aechweeks/semantic-release-jira-releases-modern",
   "license": "MIT",
   "files": [
     "lib/**/*",
