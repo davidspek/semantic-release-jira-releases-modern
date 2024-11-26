@@ -1,5 +1,5 @@
 import SemanticReleaseError from "@semantic-release/error";
-import { modernClient } from "./jira";
+import { createClient } from "./jira";
 import type { PluginConfig, PluginContext } from "./types";
 
 export async function verifyConditions(
@@ -83,6 +83,6 @@ export async function verifyConditions(
   if (!context.env.JIRA_TOKEN) {
     throw new SemanticReleaseError("JIRA_TOKEN must be a string");
   }
-  const jira = modernClient(config, context);
+  const jira = createClient(config, context);
   await jira.projects.getProject({ projectIdOrKey: config.projectId });
 }
