@@ -1,6 +1,3 @@
-<!--
-## Pull Request template
--->
 ### Description
 <!-- enter a description of your change here -->
 
@@ -23,11 +20,10 @@
 #### Protected files
 
 The following files should not change unless they are directly a part of your change.
-    <!-- Check any of the bellow files that have changed, add a reason for each if nessesary  -->
+    <!-- Check any of the bellow files that have changed, add a reason for each if necessary  -->
    - [ ] `yarn.lock` (unless package.json is also modified, then only the new/updated package should be changed here)
    
    - [ ] `package.json` (renovate bot should handle all routine updates)
    
    - [ ] `tsconfig.json` (only make it stricter, making it more lenient requires more discussion)
    
-   - [ ] `tslint.json` (only make it stricter, making it more lenient requires more discussion)
