@@ -12,8 +12,8 @@
   ],
   "scripts": {
     "type-check": "tsc --noEmit",
-    "format": "biome format --write ./lib && biome lint --write --unsafe ./lib",
-    "lint": "biome format ./lib && biome lint ./lib",
+    "format": "biome format --write ./lib ./test && biome lint --write --unsafe ./lib ./test",
+    "lint": "biome format ./lib ./test && biome lint ./lib ./test",
     "build": "tsc -p .",
     "test": "yarn jest"
   },

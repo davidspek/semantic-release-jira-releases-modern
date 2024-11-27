@@ -38,7 +38,7 @@ The plugin should be added to your config
 Please note that `ticketRegex` cannot be used together with `ticketPrefixes`.
 ```
 ```typescript
-interface Config {
+export interface Config {
   /**
    * A domain of a jira instance ie: `your-company.atlassian.net`
    */
@@ -80,7 +80,7 @@ interface Config {
    *      notes: The full release notes: This may be very large
    *             Only use it if you have very small releases
    *
-   * @default `Automated released with semantic-release-jira-releases-modern`
+   * @default `Automated release with semantic-release-jira-releases-modern`
    */
   releaseDescriptionTemplate?: string;
 
@@ -97,5 +97,13 @@ interface Config {
    * include the release date when creating a release in jira
    */
   setReleaseDate?: boolean;
+  /**
+   * ignore ticket numbers in the branch name
+   */
+  disableBranchFiltering?: boolean;
 }
 ```
+
+### What is searched for the ticket prefix?
+
+We search commit bodies for a commit number and we look at the branch name as well. This means that a branch named `TEST-345-anything` with a commit `feat: thing \n TEST-123` will add a release named after the new version and link both `TEST-123` and `TEST-345` to it. This is done as a lot of the github/gitlab integrations support the branch naming to match to tickets so we want to broadly reproduce these features to reduce developer cognitive overload. Can be disabled via `disableBranchFiltering`.
