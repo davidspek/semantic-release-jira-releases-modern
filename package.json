@@ -3,7 +3,7 @@
   "version": "0.7.2",
   "packageManager": "yarn@4.1.1",
   "main": "./dist/index.js",
-  "types": "./lib ./test/index.ts",
+  "types": "./lib/index.ts",
   "repository": "https://github.com/aechweeks/semantic-release-jira-releases-modern",
   "license": "MIT",
   "files": [
