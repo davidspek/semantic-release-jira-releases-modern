@@ -25,17 +25,29 @@ export function getTickets(
   }
 
   const tickets = new Set<string>();
+  if (config.branch && config.disableBranchFiltering !== true) {
+    for (const pattern of patterns) {
+      const branchMatches = config.branch.match(pattern);
+      if (branchMatches) {
+        for (const match of branchMatches) {
+          tickets.add(match);
+          context.logger.info(
+            `Found ticket ${match} in branch: ${config.branch}`,
+          );
+        }
+      }
+    }
+  }
   for (const commit of context.commits) {
     for (const pattern of patterns) {
       const matches = commit.message.match(pattern);
       if (matches) {
-        // biome-ignore lint/complexity/noForEach: map here is most readable
-        matches.forEach((match) => {
+        for (const match of matches) {
           tickets.add(match);
           context.logger.info(
             `Found ticket ${matches} in commit: ${commit.commit.short}`,
           );
-        });
+        }
       }
     }
   }

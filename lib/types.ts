@@ -118,4 +118,8 @@ export interface PluginConfig extends BaseConfig {
    * include the release date when creating a release in jira
    */
   setReleaseDate?: boolean;
+  /**
+   * ignore ticket numbers in the branch name
+   */
+  disableBranchFiltering?: boolean;
 }

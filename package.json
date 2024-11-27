@@ -3,7 +3,7 @@
   "version": "0.7.2",
   "packageManager": "yarn@4.1.1",
   "main": "./dist/index.js",
-  "types": "./lib/index.ts",
+  "types": "./lib ./test/index.ts",
   "repository": "https://github.com/aechweeks/semantic-release-jira-releases-modern",
   "license": "MIT",
   "files": [
@@ -12,8 +12,8 @@
   ],
   "scripts": {
     "type-check": "tsc --noEmit",
-    "format": "biome format --write ./lib && biome lint --write --unsafe ./lib",
-    "lint": "biome format ./lib && biome lint ./lib",
+    "format": "biome format --write ./lib ./test && biome lint --write --unsafe ./lib ./test",
+    "lint": "biome format ./lib ./test && biome lint ./lib ./test",
     "build": "tsc -p .",
     "test": "yarn jest"
   },
