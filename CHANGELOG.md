@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/aechweeks/semantic-release-jira-releases-modern/compare/v1.1.0...v1.2.0) (2024-11-27)
+
+
+### Features
+
+* adding branch filtering ([0db1a11](https://github.com/aechweeks/semantic-release-jira-releases-modern/commit/0db1a11b3f534182bc654d7bcd36f4881b6e2822))
+
 # [1.1.0](https://github.com/aechweeks/semantic-release-jira-releases-modern/compare/v1.0.0...v1.1.0) (2024-11-26)
 
 
