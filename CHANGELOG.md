@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/davidspek/semantic-release-jira-releases-modern/compare/v1.0.0...v1.1.0) (2024-12-31)
+
+
+### Features
+
+* keep current fix versions ([5861f49](https://github.com/davidspek/semantic-release-jira-releases-modern/commit/5861f49c3d90878b9090374844c46e0d5a880599))
+
 # 1.0.0 (2024-12-31)
 
 
