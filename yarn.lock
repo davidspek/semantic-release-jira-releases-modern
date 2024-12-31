@@ -738,6 +738,35 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@davidspekorg/semantic-release-jira-releases-modern@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "@davidspekorg/semantic-release-jira-releases-modern@workspace:."
+  dependencies:
+    "@biomejs/biome": "npm:1.9.4"
+    "@semantic-release/changelog": "npm:6.0.3"
+    "@semantic-release/error": "npm:2.2.0"
+    "@semantic-release/exec": "npm:6.0.3"
+    "@semantic-release/git": "npm:10.0.1"
+    "@semantic-release/github": "npm:11.0.1"
+    "@semantic-release/npm": "npm:12.0.1"
+    "@types/jest": "npm:29.5.14"
+    "@types/lodash": "npm:4.17.13"
+    "@types/request": "npm:2.48.12"
+    "@types/semantic-release__error": "npm:3.0.3"
+    "@types/signale": "npm:1.4.7"
+    esbuild: "npm:0.24.0"
+    esbuild-jest: "npm:0.5.0"
+    esbuild-register: "npm:3.6.0"
+    jest: "npm:29.7.0"
+    jira.js: "npm:4.0.2"
+    lodash: "npm:4.17.21"
+    p-limit: "npm:2.3.0"
+    semantic-release: "npm:24.2.0"
+    tslib: "npm:1.14.1"
+    typescript: "npm:5.7.2"
+  languageName: unknown
+  linkType: soft
+
 "@esbuild/aix-ppc64@npm:0.24.0":
   version: 0.24.0
   resolution: "@esbuild/aix-ppc64@npm:0.24.0"
@@ -7663,35 +7692,6 @@ __metadata:
   checksum: 10c0/7d0991ecaa10b02c6d0339a6f7e31db776971f3b659a351916dcc7ce3464671e72b54d80bcce118e39d4343e1e56c699fe35f6cb89fbd88b07095b72841cbfb0
   languageName: node
   linkType: hard
-
-"semantic-release-jira-releases-modern@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "semantic-release-jira-releases-modern@workspace:."
-  dependencies:
-    "@biomejs/biome": "npm:1.9.4"
-    "@semantic-release/changelog": "npm:6.0.3"
-    "@semantic-release/error": "npm:2.2.0"
-    "@semantic-release/exec": "npm:6.0.3"
-    "@semantic-release/git": "npm:10.0.1"
-    "@semantic-release/github": "npm:11.0.1"
-    "@semantic-release/npm": "npm:12.0.1"
-    "@types/jest": "npm:29.5.14"
-    "@types/lodash": "npm:4.17.13"
-    "@types/request": "npm:2.48.12"
-    "@types/semantic-release__error": "npm:3.0.3"
-    "@types/signale": "npm:1.4.7"
-    esbuild: "npm:0.24.0"
-    esbuild-jest: "npm:0.5.0"
-    esbuild-register: "npm:3.6.0"
-    jest: "npm:29.7.0"
-    jira.js: "npm:4.0.2"
-    lodash: "npm:4.17.21"
-    p-limit: "npm:2.3.0"
-    semantic-release: "npm:24.2.0"
-    tslib: "npm:1.14.1"
-    typescript: "npm:5.7.2"
-  languageName: unknown
-  linkType: soft
 
 "semantic-release@npm:24.2.0":
   version: 24.2.0
