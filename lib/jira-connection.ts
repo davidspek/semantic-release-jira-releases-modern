@@ -1,7 +1,7 @@
 import { find } from "lodash";
 import type { Version3Client } from "jira.js";
 import type { PluginConfig, GenerateNotesContext } from "./types";
-import type { Fields, Version } from "jira.js/out/version3/models";
+import { Fields, Version } from "jira.js/out/version3/models";
 import type { EditIssue } from "jira.js/out/version3/parameters";
 
 export async function findOrCreateVersion(
@@ -64,8 +64,18 @@ export async function editIssueFixVersions(
   try {
     context.logger.info(`Adding issue ${issueKey} to '${newVersion.name}'`);
     if (!config.dryRun) {
+      const currentIssue = await jira.issues.getIssue({ issueIdOrKey: issueKey, fields: ["fixVersions"] });
+
       const fixFieldUpdate: Partial<Fields> = {
         fixVersions: [
+          ...currentIssue.fields.fixVersions.map((version) => ({
+            id: version.id,
+            name: version.name,
+            self: version.self,
+            description: version.description,
+            archived: version.archived,
+            released: version.released,
+          })),
           {
             id: newVersion.id || "",
             name: newVersion.name || "",
